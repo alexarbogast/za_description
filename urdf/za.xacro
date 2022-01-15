@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<robot name="za" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:arg name="prefix" default=""/>
+  <xacro:arg name="fixed_tool" default="True"/>
+  <xacro:include filename="$(find za_description)/urdf/za_macro.xacro"/>
+  <xacro:za_macro prefix="$(arg prefix)" tool0_trans="0 0 0" tool0_rot="0 ${pi*1} 0" tool0_fixed="$(arg fixed_tool)"/>
+
+  <!-- 'world' frame: default pose reference frame -->
+  <link name="world" />
+  <joint name="world-$(arg prefix)base_link" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <parent link="world"/>
+    <child link="$(arg prefix)base_link"/>
+  </joint>
+</robot>

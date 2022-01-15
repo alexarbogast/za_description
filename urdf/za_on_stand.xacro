@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<robot name="za" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:arg name="tool" default="none"/>
+  <xacro:include filename="$(find za_description)/urdf/za_on_stand_macro.xacro"/>
+  <xacro:za_on_stand_macro prefix="" standprefix="" tool="$(arg tool)"/>
+
+  <!-- 'world' frame: default pose reference frame -->
+  <link name="world" />
+  <joint name="world-za_stand_link" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <parent link="world"/>
+    <child link="za_stand_link"/>
+  </joint>
+</robot>
