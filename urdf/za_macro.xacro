@@ -6,28 +6,25 @@
     <link name="${prefix}base_link">
       <visual>
         <geometry>
-          <mesh filename="package://za_description/meshes/base_link.dae"/>
+          <mesh filename="package://za_description/meshes/visual/base_link.dae"/>
         </geometry>
-        <origin rpy="0.0 0 0.0" xyz="0 0 0"/>
       </visual>
       <collision>
         <geometry>
-          <mesh filename="package://za_description/meshes/base_link_collision.stl"/>
+          <mesh filename="package://za_description/meshes/collision/base_link_collision.stl"/>
         </geometry>
-        <origin rpy="0.0 0 0.0" xyz="0 0 0"/>
       </collision>
     </link>
     <link name="${prefix}link_1">
       <visual>
         <geometry>
-          <mesh filename="package://za_description/meshes/link_1.dae"/>
+          <mesh filename="package://za_description/meshes/visual/link_1.dae"/>
         </geometry>
       </visual>
       <collision>
         <geometry>
-          <mesh filename="package://za_description/meshes/link_1_collision.stl"/>
+          <mesh filename="package://za_description/meshes/collision/link_1_collision.stl"/>
         </geometry>
-        <origin rpy="0.0 0 0.0" xyz="0 0 0"/>
       </collision>
       <inertial>
         <mass value="100"/>
@@ -38,15 +35,13 @@
     <link name="${prefix}link_2">
       <visual>
         <geometry>
-          <mesh filename="package://za_description/meshes/link_2.dae"/>
+          <mesh filename="package://za_description/meshes/visual/link_2.dae"/>
         </geometry>
-        <origin rpy="0.0 0 0.0" xyz="0 0 0"/>
       </visual>
       <collision>
         <geometry>
-          <mesh filename="package://za_description/meshes/link_2_collision.stl"/>
+          <mesh filename="package://za_description/meshes/collision/link_2_collision.stl"/>
         </geometry>
-        <origin rpy="0.0 0 0.0" xyz="0 0 0"/>
       </collision>
       <inertial>
         <mass value="100"/>
@@ -57,15 +52,13 @@
     <link name="${prefix}link_3">
       <visual>
         <geometry>
-          <mesh filename="package://za_description/meshes/link_3.dae"/>
+          <mesh filename="package://za_description/meshes/visual/link_3.dae"/>
         </geometry>
-        <origin rpy="0.0 0 0.0" xyz="0 0 0"/>
       </visual>
       <collision>
         <geometry>
-          <mesh filename="package://za_description/meshes/link_3_collision.stl"/>
+          <mesh filename="package://za_description/meshes/collision/link_3_collision.stl"/>
         </geometry>
-        <origin rpy="0.0 0 0.0" xyz="-0 0 0"/>
       </collision>
       <inertial>
         <mass value="100"/>
@@ -76,15 +69,13 @@
     <link name="${prefix}link_4">
       <visual>
         <geometry>
-          <mesh filename="package://za_description/meshes/link_4.dae"/>
+          <mesh filename="package://za_description/meshes/visual/link_4.dae"/>
         </geometry>
-        <origin rpy="0.0 0.0 0.0" xyz="0 0 0"/>
       </visual>
       <collision>
         <geometry>
-          <mesh filename="package://za_description/meshes/link_4_collision.stl"/>
+          <mesh filename="package://za_description/meshes/collision/link_4_collision.stl"/>
         </geometry>
-        <origin rpy="0.0 0 0.0" xyz="0 0 0"/>
       </collision>
       <inertial>
         <mass value="100"/>
@@ -95,15 +86,13 @@
     <link name="${prefix}link_5">
       <visual>
         <geometry>
-          <mesh filename="package://za_description/meshes/link_5.dae"/>
+          <mesh filename="package://za_description/meshes/visual/link_5.dae"/>
         </geometry>
-        <origin rpy="0 0 0" xyz="0 0 0"/>
       </visual>
       <collision>
         <geometry>
-          <mesh filename="package://za_description/meshes/link_5_collision.stl"/>
+          <mesh filename="package://za_description/meshes/collision/link_5_collision.stl"/>
         </geometry>
-        <origin rpy="0 0 0" xyz="0 0 0"/>
       </collision>
       <inertial>
         <mass value="100"/>
@@ -114,15 +103,13 @@
     <link name="${prefix}link_6">
       <visual>
         <geometry>
-          <mesh filename="package://za_description/meshes/link_6.dae"/>
+          <mesh filename="package://za_description/meshes/visual/link_6.dae"/>
         </geometry>
-        <origin rpy="0 0 0.0" xyz="0 0 0"/>
       </visual>
       <collision>
         <geometry>
-          <mesh filename="package://za_description/meshes/link_6_collision.stl"/>
+          <mesh filename="package://za_description/meshes/collision/link_6_collision.stl"/>
         </geometry>
-        <origin rpy="0 0 0.0" xyz="0 0 0"/>
       </collision>
       <inertial>
         <mass value="100"/>
@@ -132,50 +119,46 @@
 
     <!-- joint list -->
     <joint name="${prefix}joint_1" type="revolute">
-      <limit effort="1000.0" lower="-2.96" upper="2.96" velocity="2.6"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0 0 0.45"/>
+      <axis xyz="0 0 1"/>
       <parent link="${prefix}base_link"/>
       <child link="${prefix}link_1"/>
-      <axis xyz="0 0 1"/>
-      <origin rpy="0.0 0.0 0.0" xyz="0 0 0.279"/>
+      <limit effort="1000.0" lower="-2.96" upper="2.96" velocity="2.6"/>
     </joint>
-
     <joint name="${prefix}joint_2" type="revolute">
-      <limit effort="1000.0" lower="-1.74" upper="2.35" velocity="1.9"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.025 0 0.0"/>
+      <axis xyz="0 1 0"/>
       <parent link="${prefix}link_1"/>
       <child link="${prefix}link_2"/>
-      <axis xyz="0 1 0"/>
-      <origin rpy="0.0 0.0 0.0" xyz="0.025 0 0.171"/>
+      <limit effort="1000.0" lower="-1.74" upper="2.35" velocity="1.9"/>
     </joint>
-
     <joint name="${prefix}joint_3" type="revolute">
-      <limit effort="1000.0" lower="-1.570796" upper="1.15" velocity="2.6"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.454"/>
+      <axis xyz="0 1 0"/>
       <parent link="${prefix}link_2"/>
       <child link="${prefix}link_3"/>
-      <axis xyz="0 1 0"/>
-      <origin rpy="0.0 ${pi/2.0} 0.0" xyz="0.0 -0.001 0.454"/>
+      <limit effort="1000.0" lower="-1.570796" upper="1.15" velocity="2.6"/>
     </joint>
-
     <joint name="${prefix}joint_4" type="revolute">
-      <limit effort="1000.0" lower="-2.6" upper="2.6" velocity="3.5"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.035"/>
+      <axis xyz="1 0 0"/>
       <parent link="${prefix}link_3"/>
       <child link="${prefix}link_4"/>
-      <axis xyz="0 0 1"/>
-      <origin rpy="0.0 0.0 0.0" xyz="-0.035 -0 0.123"/>
+      <limit effort="1000.0" lower="-2.6" upper="2.6" velocity="3.5"/>
     </joint>
     <joint name="${prefix}joint_5" type="revolute">
-      <limit effort="1000.0" lower="-2.49" upper="2.49" velocity="3.9"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.4195 0.0 0.0"/>
+      <axis xyz="0 1 0"/>
       <parent link="${prefix}link_4"/>
       <child link="${prefix}link_5"/>
-      <axis xyz="0 1 0"/>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.001 0.2965"/>
+      <limit effort="1000.0" lower="-2.49" upper="2.49" velocity="3.9"/>
     </joint>
-
     <joint name="${prefix}joint_6" type="revolute">
-      <limit effort="1000.0" lower="${pi*-1}" upper="${pi*1}" velocity="${pi*2}"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.1 0.0 0.0"/>
+      <axis xyz="1 0 0"/>
       <parent link="${prefix}link_5"/>
       <child link="${prefix}link_6"/>
-      <axis xyz="0 0 1"/>
-      <origin rpy="0.0 0.0 0.0" xyz="0 0 0.1"/>
+      <limit effort="1000.0" lower="${pi*-1}" upper="${pi*1}" velocity="${pi*2}"/>
     </joint>
 
 
@@ -202,14 +185,14 @@
       <joint name="${prefix}link_6_tool0" type="fixed">
         <!-- marker -->
         <origin xyz="${tool0_trans}" rpy="${tool0_rot}" />
-        <parent link="${prefix}link_6" />
+        <parent link="${prefix}flange" />
         <child link="${prefix}tool0" />
       </joint>
     </xacro:if>
     <xacro:unless value="${tool0_fixed}">
       <joint name="${prefix}link_6_tool0" type="floating">
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <parent link="${prefix}link_6" />
+        <parent link="${prefix}flange" />
         <child link="${prefix}tool0" />
       </joint>
     </xacro:unless>

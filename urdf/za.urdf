@@ -4,43 +4,29 @@
 <!-- |    EDITING THIS FILE BY HAND IS NOT RECOMMENDED                                 | -->
 <!-- =================================================================================== -->
 <robot name="za">
-  <material name="TormachBlue">
-    <color rgba="0.1490 0.2196 0.2667 0.99"/>
-  </material>
-  <material name="Black">
-    <color rgba="0.0 0.0 0.0 0.99"/>
-  </material>
   <!-- link list -->
   <link name="base_link">
     <visual>
       <geometry>
-        <mesh filename="package://za_description/meshes/base_link.stl"/>
+        <mesh filename="package://za_description/meshes/base_link.dae"/>
       </geometry>
-      <origin rpy="0.0 0 0.0" xyz="0 0 0"/>
-      <material name="TormachBlue">
-        </material>
     </visual>
     <collision>
       <geometry>
         <mesh filename="package://za_description/meshes/base_link_collision.stl"/>
       </geometry>
-      <origin rpy="0.0 0 0.0" xyz="0 0 0"/>
     </collision>
   </link>
   <link name="link_1">
     <visual>
       <geometry>
-        <mesh filename="package://za_description/meshes/link_1.stl"/>
+        <mesh filename="package://za_description/meshes/link_1.dae"/>
       </geometry>
-      <origin rpy="0.0 0 0.0" xyz="0 0 0"/>
-      <material name="TormachBlue">
-        </material>
     </visual>
     <collision>
       <geometry>
         <mesh filename="package://za_description/meshes/link_1_collision.stl"/>
       </geometry>
-      <origin rpy="0.0 0 0.0" xyz="0 0 0"/>
     </collision>
     <inertial>
       <mass value="100"/>
@@ -50,17 +36,13 @@
   <link name="link_2">
     <visual>
       <geometry>
-        <mesh filename="package://za_description/meshes/link_2.stl"/>
+        <mesh filename="package://za_description/meshes/link_2.dae"/>
       </geometry>
-      <origin rpy="0.0 0 0.0" xyz="0 0 0"/>
-      <material name="TormachBlue">
-        </material>
     </visual>
     <collision>
       <geometry>
         <mesh filename="package://za_description/meshes/link_2_collision.stl"/>
       </geometry>
-      <origin rpy="0.0 0 0.0" xyz="0 0 0"/>
     </collision>
     <inertial>
       <mass value="100"/>
@@ -70,17 +52,13 @@
   <link name="link_3">
     <visual>
       <geometry>
-        <mesh filename="package://za_description/meshes/link_3.stl"/>
+        <mesh filename="package://za_description/meshes/link_3.dae"/>
       </geometry>
-      <origin rpy="0.0 0 0.0" xyz="0 0 0"/>
-      <material name="TormachBlue">
-        </material>
     </visual>
     <collision>
       <geometry>
         <mesh filename="package://za_description/meshes/link_3_collision.stl"/>
       </geometry>
-      <origin rpy="0.0 0 0.0" xyz="-0 0 0"/>
     </collision>
     <inertial>
       <mass value="100"/>
@@ -90,17 +68,13 @@
   <link name="link_4">
     <visual>
       <geometry>
-        <mesh filename="package://za_description/meshes/link_4.stl"/>
+        <mesh filename="package://za_description/meshes/link_4.dae"/>
       </geometry>
-      <origin rpy="0.0 0.0 0.0" xyz="0 0 0"/>
-      <material name="TormachBlue">
-        </material>
     </visual>
     <collision>
       <geometry>
         <mesh filename="package://za_description/meshes/link_4_collision.stl"/>
       </geometry>
-      <origin rpy="0.0 0 0.0" xyz="0 0 0"/>
     </collision>
     <inertial>
       <mass value="100"/>
@@ -110,17 +84,13 @@
   <link name="link_5">
     <visual>
       <geometry>
-        <mesh filename="package://za_description/meshes/link_5.stl"/>
+        <mesh filename="package://za_description/meshes/link_5.dae"/>
       </geometry>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <material name="TormachBlue">
-        </material>
     </visual>
     <collision>
       <geometry>
         <mesh filename="package://za_description/meshes/link_5_collision.stl"/>
       </geometry>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
     </collision>
     <inertial>
       <mass value="100"/>
@@ -130,17 +100,13 @@
   <link name="link_6">
     <visual>
       <geometry>
-        <mesh filename="package://za_description/meshes/link_6.stl"/>
+        <mesh filename="package://za_description/meshes/link_6.dae"/>
       </geometry>
-      <origin rpy="0 0 0.0" xyz="0 0 0"/>
-      <material name="Black">
-        </material>
     </visual>
     <collision>
       <geometry>
         <mesh filename="package://za_description/meshes/link_6_collision.stl"/>
       </geometry>
-      <origin rpy="0 0 0.0" xyz="0 0 0"/>
     </collision>
     <inertial>
       <mass value="100"/>
@@ -149,46 +115,46 @@
   </link>
   <!-- joint list -->
   <joint name="joint_1" type="revolute">
-    <limit effort="1000.0" lower="-2.96" upper="2.96" velocity="2.6"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0 0 0.45"/>
+    <axis xyz="0 0 1"/>
     <parent link="base_link"/>
     <child link="link_1"/>
-    <axis xyz="0 0 1"/>
-    <origin rpy="0.0 0.0 0.0" xyz="0 0 0.279"/>
+    <limit effort="1000.0" lower="-2.96" upper="2.96" velocity="2.6"/>
   </joint>
   <joint name="joint_2" type="revolute">
-    <limit effort="1000.0" lower="-1.74" upper="2.35" velocity="1.9"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.025 0 0.0"/>
+    <axis xyz="0 1 0"/>
     <parent link="link_1"/>
     <child link="link_2"/>
-    <axis xyz="0 1 0"/>
-    <origin rpy="0.0 0.0 0.0" xyz="0.025 0 0.171"/>
+    <limit effort="1000.0" lower="-1.74" upper="2.35" velocity="1.9"/>
   </joint>
   <joint name="joint_3" type="revolute">
-    <limit effort="1000.0" lower="-1.570796" upper="1.15" velocity="2.6"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.454"/>
+    <axis xyz="0 1 0"/>
     <parent link="link_2"/>
     <child link="link_3"/>
-    <axis xyz="0 1 0"/>
-    <origin rpy="0.0 1.5707963267948966 0.0" xyz="0.0 -0.001 0.454"/>
+    <limit effort="1000.0" lower="-1.570796" upper="1.15" velocity="2.6"/>
   </joint>
   <joint name="joint_4" type="revolute">
-    <limit effort="1000.0" lower="-2.6" upper="2.6" velocity="3.5"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.035"/>
+    <axis xyz="1 0 0"/>
     <parent link="link_3"/>
     <child link="link_4"/>
-    <axis xyz="0 0 1"/>
-    <origin rpy="0.0 0.0 0.0" xyz="-0.035 -0 0.123"/>
+    <limit effort="1000.0" lower="-2.6" upper="2.6" velocity="3.5"/>
   </joint>
   <joint name="joint_5" type="revolute">
-    <limit effort="1000.0" lower="-2.49" upper="2.49" velocity="3.9"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.4195 0.00 0.0"/>
+    <axis xyz="0 1 0"/>
     <parent link="link_4"/>
     <child link="link_5"/>
-    <axis xyz="0 1 0"/>
-    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.001 0.2965"/>
+    <limit effort="1000.0" lower="-2.49" upper="2.49" velocity="3.9"/>
   </joint>
   <joint name="joint_6" type="revolute">
-    <limit effort="1000.0" lower="-3.141592653589793" upper="3.141592653589793" velocity="6.283185307179586"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.1 0.0 0.0"/>
+    <axis xyz="1 0 0"/>
     <parent link="link_5"/>
     <child link="link_6"/>
-    <axis xyz="0 0 1"/>
-    <origin rpy="0.0 0.0 0.0" xyz="0 0 0.1"/>
+    <limit effort="1000.0" lower="-3.141592653589793" upper="3.141592653589793" velocity="6.283185307179586"/>
   </joint>
   <!-- ROS-Industrial 'base' frame: base_link to Fanuc World Coordinates transform -->
   <link name="base"/>
