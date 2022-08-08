@@ -1,6 +1,0 @@
-<?xml version="1.0" ?>
-<robot name="za_on_stand" xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:arg name="tool" default="none"/>
-  <xacro:include filename="$(find za_description)/urdf/za_on_stand_macro.xacro"/>
-  <xacro:za_on_stand_macro prefix="" standprefix="" tool="$(arg tool)"/>
-</robot>

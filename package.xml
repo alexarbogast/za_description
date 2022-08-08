@@ -1,18 +1,15 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>za_description</name>
-  <version>0.0.0</version>
+  <version>0.1.0</version>
   <description>Tormach ZA robot URDF files and meshes</description>
 
-  <maintainer email="john@dovetail-automata.com">John Morris</maintainer>
-  <author email="alex@machinekoder.com">Alexander Rössler</author>
-  <author email="bdebruijn@luminize.nl">Bas de Bruijn</author>
-  <author email="john@dovetail-automata.com">John Morris</author>
+  <maintainer email="arbogastaw@gmail.com">Alex Arbogast</maintainer>
+  <author email="arbogastaw@gmail.com">Alex Arbogast</author>
 
   <license>MIT</license>
 
   <buildtool_depend>catkin</buildtool_depend>
-  <!-- Add `check_urdf` tool for verification -->
   <buildtool_depend>liburdfdom-tools</buildtool_depend>
 
   <exec_depend>xacro</exec_depend>

@@ -1,6 +1,0 @@
-# Esp. .step and .FCStd files look like text to git; force treatment
-# as binaries to avoid giant diffs
-*.dae binary
-*.stl binary
-*.step binary
-*.FCStd binary
