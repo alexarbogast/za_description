@@ -17,6 +17,9 @@ The mesh files used to create this robot can be found on the [Tormach wiki][tor_
   - `roslaunch za_description za_arm_description.launch`
   - This is useful to check URDFs
 
+  <img src="https://user-images.githubusercontent.com/46149643/183477417-2eaff869-53f8-4387-8b61-106968b1359d.png"  width="300" height="300">
+
+
 ## `za_moveit_config` package creation
 
 See the [MoveIt! Setup Assistant tutorial][msa_tut]
