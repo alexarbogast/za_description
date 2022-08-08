@@ -2,49 +2,30 @@
 
 Contains URDF files and meshes for the ZA robot.
 
-http://wiki.ros.org/xacro
-http://wiki.ros.org/urdf
-http://docs.ros.org/kinetic/api/moveit_tutorials/html/doc/urdf_srdf/urdf_srdf_tutorial.html
+http://wiki.ros.org/xacro  
+http://wiki.ros.org/urdf  
+http://docs.ros.org/kinetic/api/moveit_tutorials/html/doc/urdf_srdf/urdf_srdf_tutorial.html  
 
-## `za_robot` package and MoveIt! Setup Assistant
+**DISCLAIMER: This is an UNOFFICIAL robot description package. The author is not affliated with Tormach Inc..**  
+
+The mesh files used to create this robot can be found on the [Tormach wiki][tor_wiki] page.
+
+
+## `za_description` visualization
 
 - Run the demo
-  - `roslaunch za_moveit_config demo.launch`
-  - This doesn't depend on any robot hardware, and is useful to check
-    URDFs and planning configuration
-- Re-run the `moveit_setup_assistant`
-  - `roslaunch za_moveit_config setup_assistant.launch`
-  - To ease future regeneration, note changes in the below section
-    "`za_moveit_config` package creation from scratch"
+  - `roslaunch za_description za_arm_description.launch`
+  - This is useful to check URDFs
 
-
-## Xacro operations
-
-- Convert xacro to URDF
-  `rosrun xacro xacro -o /tmp/za.urdf \
-      $(rospack find za_description)/urdf/za.xacro`
-
-- Verify URDF
-  - `check_urdf /tmp/za.urdf`
-
-- Visualize URDF structure
-  - `urdf_to_graphiz /tmp/za.urdf; evince za.pdf`
-
-- Convert to Collada format
-  - `rosrun collada_urdf urdf_to_collada /tmp/za.urdf /tmp/za.dae`
-  - Note:  OpenRAVE no longer available in ROS Noetic:
-    https://index.ros.org/p/openrave/
-
-## `za_moveit_config` package creation from scratch
+## `za_moveit_config` package creation
 
 See the [MoveIt! Setup Assistant tutorial][msa_tut]
 
 - Build workspace to pick up `za_description` package
-- Verify URDFs (see below)
 - Run `roslaunch moveit_setup_assistant setup_assistant.launch`
 - "Start" tab:
   - Select "Create New Moveit Configuration Package"
-  - Load the `src/tormach/za_description/urdf/za.xacro` URDF model
+  - Load the `src/za_description/urdf/za.xacro` URDF model
   - Click "Load Files"
 - "Self-Collisions" tab:  Adds `disable_collisions` elements to SRDF
   - Click "Generate Collision Matrix"
@@ -58,14 +39,15 @@ See the [MoveIt! Setup Assistant tutorial][msa_tut]
   - Add `manipulator` group:  Click "Add Group"
     - "Group Name" "manipulator"
     - "Kinematics Solver" "kdl_kinematics_plugin/KDLKinematicsPlugin"
-    - "Group Default Planner" "RRT"
+      - Alternatively, use the IKfast plugin for this model provided in the [za_moveit_plugins][za_plug] package. 
+    - "Group Default Planner" "RRT" (or preferred alternative)
     - Click "Add Kin. Chain"
       - Base Link:  "base_link"
-      - Tip Link:  "tool0"
+      - Tip Link:  "flange"
       - Click "Save"
 - "Robot Poses" tab:  Adds `group_state` element to SRDF
   - Click "Add Pose"
-    - "Pose Name" "all-zeros"
+    - "Pose Name" "home"
     - Leave other setting default
     - Click "Save"
 - "End Effectors" tab:  (Skip)
@@ -84,7 +66,7 @@ See the [MoveIt! Setup Assistant tutorial][msa_tut]
   - Enter name and email
 - "Configuration Files" tab:
   - "Configuration Package Save Path"
-    "[...]/src/tormach/za_moveit_config" (Create directory first)
+    "[...]/src/za_moveit_config" (Create directory first)
   - Click "Generate Package"
     - Click "Ok" at "Incomplete" warning
   - Click "Exit Setup Assistant"
@@ -95,24 +77,6 @@ roslaunch za_moveit_config demo.launch
 ```
 
 
-
+[tor_wiki]: https://tormach.atlassian.net/wiki/spaces/ROBO/pages/2112094580/3D+Models
 [msa_tut]: http://docs.ros.org/kinetic/api/moveit_tutorials/html/doc/setup_assistant/setup_assistant_tutorial.html
-
-## Verify URDFs
-
-```
-for URDF in \
-    za.xacro \
-    za_on_stand.xacro \
-    robotiq_hand_e.xacro \
-    za_hand_e.xacro \
-    za_on_stand_robotiq.xacro \
-    ; do
-
-    echo -e "\n\n************** $URDF *****************"
-    rosrun xacro xacro \
-        `rospack find za_description`/urdf/${URDF} -o /tmp/test.urdf
-    check_urdf /tmp/test.urdf
-
-done
-```
+[za_plug]: https://github.com/alexarbogast/za_moveit_plugins.git
