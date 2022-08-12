@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="za_macro" params="prefix tool0_trans tool0_rot tool0_fixed">
+  <xacro:macro name="za_macro" params="prefix">
 
     <!-- link list -->
     <link name="${prefix}base_link">
@@ -181,21 +181,12 @@
 
     <!-- ROS-Industrial 'tool0' frame: all-zeros tool frame -->
     <link name="${prefix}tool0" />
-    <xacro:if value="${tool0_fixed}">
-      <joint name="${prefix}link_6_tool0" type="fixed">
-        <!-- marker -->
-        <origin xyz="${tool0_trans}" rpy="${tool0_rot}" />
-        <parent link="${prefix}flange" />
-        <child link="${prefix}tool0" />
-      </joint>
-    </xacro:if>
-    <xacro:unless value="${tool0_fixed}">
-      <joint name="${prefix}link_6_tool0" type="floating">
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <parent link="${prefix}flange" />
-        <child link="${prefix}tool0" />
-      </joint>
-    </xacro:unless>
+    <joint name="${prefix}link_6_tool0" type="fixed">
+      <origin xyz="0 0 0" rpy="0 ${pi/2} 0" />
+      <parent link="${prefix}flange" />
+      <child link="${prefix}tool0" />
+    </joint>
+
 
   </xacro:macro>
 </robot>
