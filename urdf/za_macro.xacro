@@ -133,7 +133,7 @@
       <limit effort="1000.0" lower="-1.74" upper="2.35" velocity="1.9"/>
     </joint>
     <joint name="${prefix}joint_3" type="revolute">
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.454"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.001 0.454"/>
       <axis xyz="0 1 0"/>
       <parent link="${prefix}link_2"/>
       <child link="${prefix}link_3"/>
@@ -147,7 +147,7 @@
       <limit effort="1000.0" lower="-2.6" upper="2.6" velocity="3.5"/>
     </joint>
     <joint name="${prefix}joint_5" type="revolute">
-      <origin rpy="0.0 0.0 0.0" xyz="0.4195 0.0 0.0"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.4195 0.001 0.0"/>
       <axis xyz="0 1 0"/>
       <parent link="${prefix}link_4"/>
       <child link="${prefix}link_5"/>
@@ -186,7 +186,6 @@
       <parent link="${prefix}flange" />
       <child link="${prefix}tool0" />
     </joint>
-
 
   </xacro:macro>
 </robot>
