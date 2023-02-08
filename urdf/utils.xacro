@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- Load inertial properties. Property is implicitly passed to macros. -->
+  <xacro:property name="inertial_config" value="$(find za_description)/urdf/inertial.yaml"/>
+  <xacro:property name="inertial" value="${xacro.load_yaml(inertial_config)}"/>
+
+  <xacro:macro name="default_inertial" params="mass">
+    <inertial>
+      <mass value="${mass}" />
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+    </inertial>
+  </xacro:macro>
+
+  <xacro:macro name="gazebo-joint" params="joint transmission:=hardware_interface/EffortJointInterface">
+    <transmission name="${joint}_transmission">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${joint}">
+        <hardwareInterface>${transmission}</hardwareInterface>
+      </joint>
+      <actuator name="${joint}_motor">
+        <hardwareInterface>${transmission}</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+  </xacro:macro>
+
+  <!-- ========================================================== -->
+  <!-- Adds the required tags to provide a `ZaStateInterface` -->
+  <!-- when simulating with za_hw_sim plugin                  -->
+  <!--                                                            -->
+  <!-- arm_id - Arm ID of the robot to simulate -->
+  <!-- ========================================================== -->
+  <xacro:macro name="transmission-za-state" params="arm_id">
+    <transmission name="${arm_id}za_state">
+      <type>za_hw/ZaStateInterface</type>
+      <joint name="${arm_id}joint_1"><hardwareInterface>za_hw/ZaStateInterface</hardwareInterface></joint>
+      <joint name="${arm_id}joint_2"><hardwareInterface>za_hw/ZaStateInterface</hardwareInterface></joint>
+      <joint name="${arm_id}joint_3"><hardwareInterface>za_hw/ZaStateInterface</hardwareInterface></joint>
+      <joint name="${arm_id}joint_4"><hardwareInterface>za_hw/ZaStateInterface</hardwareInterface></joint>
+      <joint name="${arm_id}joint_5"><hardwareInterface>za_hw/ZaStateInterface</hardwareInterface></joint>
+      <joint name="${arm_id}joint_6"><hardwareInterface>za_hw/ZaStateInterface</hardwareInterface></joint>
+
+      <actuator name="${arm_id}motor_1"><hardwareInterface>za_hw/ZaStateInterface</hardwareInterface></actuator>
+      <actuator name="${arm_id}motor_2"><hardwareInterface>za_hw/ZaStateInterface</hardwareInterface></actuator>
+      <actuator name="${arm_id}motor_3"><hardwareInterface>za_hw/ZaStateInterface</hardwareInterface></actuator>
+      <actuator name="${arm_id}motor_4"><hardwareInterface>za_hw/ZaStateInterface</hardwareInterface></actuator>
+      <actuator name="${arm_id}motor_5"><hardwareInterface>za_hw/ZaStateInterface</hardwareInterface></actuator>
+      <actuator name="${arm_id}motor_6"><hardwareInterface>za_hw/ZaStateInterface</hardwareInterface></actuator>
+    </transmission>
+  </xacro:macro>
+
+  <!-- ============================================================ -->
+  <!-- Adds the required tags to provide a `ZaModelInterface`   -->
+  <!-- when simulating with za_hw_sim plugin                    -->
+  <!--                                                              -->
+  <!-- arm_id - Arm ID of the robot to simulate    -->
+  <!-- root   - Joint name of the base of the robot                 -->
+  <!-- tip    - Joint name of the tip of the robot (flange or hand) -->
+  <!-- ============================================================ -->
+  <xacro:macro name="transmission-za-model" params="arm_id root tip">
+    <transmission name="${arm_id}_za_model">
+      <type>za_hw/ZaModelInterface</type>
+      <joint name="${root}">
+        <role>root</role>
+        <hardwareInterface>za_hw/ZaModelInterface</hardwareInterface>
+      </joint>
+      <joint name="${tip}">
+        <role>tip</role>
+        <hardwareInterface>za_hw/ZaModelInterface</hardwareInterface>
+      </joint>
+
+      <actuator name="${root}_motor_root"><hardwareInterface>za_hw/ZaModelInterface</hardwareInterface></actuator>
+      <actuator name="${tip}_motor_tip"  ><hardwareInterface>za_hw/ZaModelInterface</hardwareInterface></actuator>
+    </transmission>
+  </xacro:macro>
+
+</robot>
