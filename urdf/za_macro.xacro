@@ -4,7 +4,7 @@
   
   <xacro:macro name="za_macro" params="prefix">
     <!-- Is the robot being simulated in gazebo?" -->
-    <xacro:arg name="gazebo" default="false" />
+    <xacro:arg name="gazebo" default="true" />
 
     <!-- link list -->
     <link name="${prefix}base_link">
