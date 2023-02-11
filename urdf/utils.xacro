@@ -58,7 +58,7 @@
   <!-- tip    - Joint name of the tip of the robot (flange or hand) -->
   <!-- ============================================================ -->
   <xacro:macro name="transmission-za-model" params="arm_id root tip">
-    <transmission name="${arm_id}_za_model">
+    <transmission name="${arm_id}za_model">
       <type>za_hw/ZaModelInterface</type>
       <joint name="${root}">
         <role>root</role>
