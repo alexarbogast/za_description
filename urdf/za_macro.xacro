@@ -140,15 +140,15 @@
       <parent link="${prefix}base_link"/>
       <child link="${prefix}link_1"/>
       <limit effort="1000.0" lower="-2.96" upper="2.96" velocity="2.6"/>
-      <dynamics damping="0.003" friction="0.0" mu_coulomb="0" mu_viscous="16" />
-    </joint>
+      <dynamics damping="0.003" friction="0.0"/>
+  </joint>
     <joint name="${prefix}joint_2" type="revolute">
       <origin rpy="0.0 0.0 0.0" xyz="0.025 0 0.0"/>
       <axis xyz="0 1 0"/>
       <parent link="${prefix}link_1"/>
       <child link="${prefix}link_2"/>
       <limit effort="1000.0" lower="-1.74" upper="2.35" velocity="1.9"/>
-      <dynamics damping="0.003" friction="0.0" mu_coulomb="0" mu_viscous="16" />
+      <dynamics damping="0.003" friction="0.0"/>
     </joint>
     <joint name="${prefix}joint_3" type="revolute">
       <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.001 0.454"/>
@@ -156,7 +156,7 @@
       <parent link="${prefix}link_2"/>
       <child link="${prefix}link_3"/>
       <limit effort="1000.0" lower="-1.570796" upper="1.15" velocity="2.6"/>
-      <dynamics damping="0.003" friction="0.0" mu_coulomb="0" mu_viscous="16" />
+      <dynamics damping="0.003" friction="0.0"/>
     </joint>
     <joint name="${prefix}joint_4" type="revolute">
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.035"/>
@@ -164,7 +164,7 @@
       <parent link="${prefix}link_3"/>
       <child link="${prefix}link_4"/>
       <limit effort="1000.0" lower="-2.6" upper="2.6" velocity="3.5"/>
-      <dynamics damping="0.003" friction="0.0" mu_coulomb="0" mu_viscous="16" />
+      <dynamics damping="0.003" friction="0.0"/>
     </joint>
     <joint name="${prefix}joint_5" type="revolute">
       <origin rpy="0.0 0.0 0.0" xyz="0.4195 0.001 0.0"/>
@@ -172,7 +172,7 @@
       <parent link="${prefix}link_4"/>
       <child link="${prefix}link_5"/>
       <limit effort="1000.0" lower="-2.49" upper="2.49" velocity="3.9"/>
-      <dynamics damping="0.003" friction="0.0" mu_coulomb="0" mu_viscous="16" />
+      <dynamics damping="0.003" friction="0.0"/>
     </joint>
     <joint name="${prefix}joint_6" type="revolute">
       <origin rpy="0.0 0.0 0.0" xyz="0.1175 0.0 0.0"/>
@@ -180,7 +180,7 @@
       <parent link="${prefix}link_5"/>
       <child link="${prefix}link_6"/>
       <limit effort="1000.0" lower="${pi*-1}" upper="${pi*1}" velocity="${pi*2}"/>
-      <dynamics damping="0.003" friction="0.0" mu_coulomb="0" mu_viscous="16" />
+      <dynamics damping="0.003" friction="0.0"/>
     </joint>
 
     <!-- ROS-Industrial 'base' frame: base_link to Fanuc World Coordinates transform -->
@@ -210,26 +210,26 @@
 
     <!-- Define additional Gazebo tags -->
     <xacro:if value="$(arg gazebo)">
-      <xacro:gazebo-joint joint="${prefix}joint_1" transmission="hardware_interface/EffortJointInterface" />
-      <xacro:gazebo-joint joint="${prefix}joint_2" transmission="hardware_interface/EffortJointInterface" />
-      <xacro:gazebo-joint joint="${prefix}joint_3" transmission="hardware_interface/EffortJointInterface" />
-      <xacro:gazebo-joint joint="${prefix}joint_4" transmission="hardware_interface/EffortJointInterface" />
-      <xacro:gazebo-joint joint="${prefix}joint_5" transmission="hardware_interface/EffortJointInterface" />
-      <xacro:gazebo-joint joint="${prefix}joint_6" transmission="hardware_interface/EffortJointInterface" />
+      <xacro:gazebo-joint joint="${prefix}joint_1" transmission="hardware_interface/EffortJointInterface" reduction="1.5"/>
+      <xacro:gazebo-joint joint="${prefix}joint_2" transmission="hardware_interface/EffortJointInterface" reduction="100"/>
+      <xacro:gazebo-joint joint="${prefix}joint_3" transmission="hardware_interface/EffortJointInterface" reduction="50"/>
+      <xacro:gazebo-joint joint="${prefix}joint_4" transmission="hardware_interface/EffortJointInterface" reduction="1.25"/>
+      <xacro:gazebo-joint joint="${prefix}joint_5" transmission="hardware_interface/EffortJointInterface" reduction="50"/>
+      <xacro:gazebo-joint joint="${prefix}joint_6" transmission="hardware_interface/EffortJointInterface" reduction="30"/>
 
-      <xacro:gazebo-joint joint="${prefix}joint_1" transmission="hardware_interface/VelocityJointInterface" />
-      <xacro:gazebo-joint joint="${prefix}joint_2" transmission="hardware_interface/VelocityJointInterface" />
-      <xacro:gazebo-joint joint="${prefix}joint_3" transmission="hardware_interface/VelocityJointInterface" />
-      <xacro:gazebo-joint joint="${prefix}joint_4" transmission="hardware_interface/VelocityJointInterface" />
-      <xacro:gazebo-joint joint="${prefix}joint_5" transmission="hardware_interface/VelocityJointInterface" />
-      <xacro:gazebo-joint joint="${prefix}joint_6" transmission="hardware_interface/VelocityJointInterface" />
+      <xacro:gazebo-joint joint="${prefix}joint_1" transmission="hardware_interface/VelocityJointInterface" reduction="1.5"/>
+      <xacro:gazebo-joint joint="${prefix}joint_2" transmission="hardware_interface/VelocityJointInterface" reduction="100"/>
+      <xacro:gazebo-joint joint="${prefix}joint_3" transmission="hardware_interface/VelocityJointInterface" reduction="50"/>
+      <xacro:gazebo-joint joint="${prefix}joint_4" transmission="hardware_interface/VelocityJointInterface" reduction="1.25"/>
+      <xacro:gazebo-joint joint="${prefix}joint_5" transmission="hardware_interface/VelocityJointInterface" reduction="50"/>
+      <xacro:gazebo-joint joint="${prefix}joint_6" transmission="hardware_interface/VelocityJointInterface" reduction="30"/>
 
-      <xacro:gazebo-joint joint="${prefix}joint_1" transmission="hardware_interface/PositionJointInterface" />
-      <xacro:gazebo-joint joint="${prefix}joint_2" transmission="hardware_interface/PositionJointInterface" />
-      <xacro:gazebo-joint joint="${prefix}joint_3" transmission="hardware_interface/PositionJointInterface" />
-      <xacro:gazebo-joint joint="${prefix}joint_4" transmission="hardware_interface/PositionJointInterface" />
-      <xacro:gazebo-joint joint="${prefix}joint_5" transmission="hardware_interface/PositionJointInterface" />
-      <xacro:gazebo-joint joint="${prefix}joint_6" transmission="hardware_interface/PositionJointInterface" />
+      <xacro:gazebo-joint joint="${prefix}joint_1" transmission="hardware_interface/PositionJointInterface" reduction="1.5"/>
+      <xacro:gazebo-joint joint="${prefix}joint_2" transmission="hardware_interface/PositionJointInterface" reduction="100"/>
+      <xacro:gazebo-joint joint="${prefix}joint_3" transmission="hardware_interface/PositionJointInterface" reduction="50"/>
+      <xacro:gazebo-joint joint="${prefix}joint_4" transmission="hardware_interface/PositionJointInterface" reduction="1.25"/>
+      <xacro:gazebo-joint joint="${prefix}joint_5" transmission="hardware_interface/PositionJointInterface" reduction="50"/>
+      <xacro:gazebo-joint joint="${prefix}joint_6" transmission="hardware_interface/PositionJointInterface" reduction="30"/>
 
       <xacro:transmission-za-state arm_id="${prefix}" />
       <xacro:transmission-za-model arm_id="${prefix}"

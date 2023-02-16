@@ -11,7 +11,7 @@
     </inertial>
   </xacro:macro>
 
-  <xacro:macro name="gazebo-joint" params="joint transmission:=hardware_interface/EffortJointInterface">
+  <xacro:macro name="gazebo-joint" params="joint transmission:=hardware_interface/EffortJointInterface reduction:=1">
     <transmission name="${joint}_transmission">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="${joint}">
@@ -19,7 +19,7 @@
       </joint>
       <actuator name="${joint}_motor">
         <hardwareInterface>${transmission}</hardwareInterface>
-        <mechanicalReduction>1</mechanicalReduction>
+        <mechanicalReduction>${reduction}</mechanicalReduction>
       </actuator>
     </transmission>
   </xacro:macro>
