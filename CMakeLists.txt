@@ -1,8 +1,9 @@
-cmake_minimum_required(VERSION 3.0.2)
+cmake_minimum_required(VERSION 3.5)
 project(za_description)
+find_package(ament_cmake REQUIRED)
 
-find_package(catkin REQUIRED)
-catkin_package(CATKIN_DEPENDS xacro)
+install(DIRECTORY 
+    launch urdf meshes rviz
+    DESTINATION share/${PROJECT_NAME})
 
-install(DIRECTORY meshes DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
-install(DIRECTORY urdf DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+ament_package()
