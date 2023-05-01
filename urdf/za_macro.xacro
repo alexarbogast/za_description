@@ -179,8 +179,8 @@
       <axis xyz="1 0 0"/>
       <parent link="${prefix}link_5"/>
       <child link="${prefix}link_6"/>
-      <limit effort="3.0" lower="${pi*-1}" upper="${pi*1}" velocity="${pi*2}"/>
-      <dynamics damping="0.003" friction="0.003"/>
+      <limit effort="10.0" lower="${pi*-1}" upper="${pi*1}" velocity="${pi*2}"/>
+      <dynamics damping="0.003" friction="0.0"/>
     </joint>
 
     <!-- ROS-Industrial 'base' frame: base_link to Fanuc World Coordinates transform -->
