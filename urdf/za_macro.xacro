@@ -208,34 +208,5 @@
       <child link="${prefix}tool0" />
     </joint>
 
-    <!-- Define additional Gazebo tags -->
-    <xacro:if value="$(arg gazebo)">
-      <xacro:gazebo-joint joint="${prefix}joint_1" transmission="hardware_interface/EffortJointInterface" reduction="1.5"/>
-      <xacro:gazebo-joint joint="${prefix}joint_2" transmission="hardware_interface/EffortJointInterface" reduction="100"/>
-      <xacro:gazebo-joint joint="${prefix}joint_3" transmission="hardware_interface/EffortJointInterface" reduction="50"/>
-      <xacro:gazebo-joint joint="${prefix}joint_4" transmission="hardware_interface/EffortJointInterface" reduction="1.25"/>
-      <xacro:gazebo-joint joint="${prefix}joint_5" transmission="hardware_interface/EffortJointInterface" reduction="50"/>
-      <xacro:gazebo-joint joint="${prefix}joint_6" transmission="hardware_interface/EffortJointInterface" reduction="30"/>
-
-      <xacro:gazebo-joint joint="${prefix}joint_1" transmission="hardware_interface/VelocityJointInterface" reduction="1.5"/>
-      <xacro:gazebo-joint joint="${prefix}joint_2" transmission="hardware_interface/VelocityJointInterface" reduction="100"/>
-      <xacro:gazebo-joint joint="${prefix}joint_3" transmission="hardware_interface/VelocityJointInterface" reduction="50"/>
-      <xacro:gazebo-joint joint="${prefix}joint_4" transmission="hardware_interface/VelocityJointInterface" reduction="1.25"/>
-      <xacro:gazebo-joint joint="${prefix}joint_5" transmission="hardware_interface/VelocityJointInterface" reduction="50"/>
-      <xacro:gazebo-joint joint="${prefix}joint_6" transmission="hardware_interface/VelocityJointInterface" reduction="30"/>
-
-      <xacro:gazebo-joint joint="${prefix}joint_1" transmission="hardware_interface/PositionJointInterface" reduction="1.5"/>
-      <xacro:gazebo-joint joint="${prefix}joint_2" transmission="hardware_interface/PositionJointInterface" reduction="100"/>
-      <xacro:gazebo-joint joint="${prefix}joint_3" transmission="hardware_interface/PositionJointInterface" reduction="50"/>
-      <xacro:gazebo-joint joint="${prefix}joint_4" transmission="hardware_interface/PositionJointInterface" reduction="1.25"/>
-      <xacro:gazebo-joint joint="${prefix}joint_5" transmission="hardware_interface/PositionJointInterface" reduction="50"/>
-      <xacro:gazebo-joint joint="${prefix}joint_6" transmission="hardware_interface/PositionJointInterface" reduction="30"/>
-
-      <xacro:transmission-za-state arm_id="${prefix}" />
-      <xacro:transmission-za-model arm_id="${prefix}"
-         root="${prefix}joint_1"
-         tip="${prefix}joint_6-flange"
-      />
-    </xacro:if>
   </xacro:macro>
 </robot>
