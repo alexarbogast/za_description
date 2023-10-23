@@ -1,6 +1,8 @@
 <?xml version="1.0" ?>
 <robot name="za" xmlns:xacro="http://www.ros.org/wiki/xacro">
   <xacro:arg name="prefix" default=""/>
+  <xacro:arg name="use_mock_hardware" default="true"/>
+  <xacro:arg name="include_hardware" default="true"/>
   <xacro:include filename="$(find za_description)/urdf/za_macro.xacro"/>
   <xacro:za_macro prefix="$(arg prefix)"/>
 
@@ -13,6 +15,8 @@
     <child link="$(arg prefix)base_link"/>
   </joint>
 
-  <xacro:include filename="$(find za_description)/urdf/za.ros2_control.xacro"/>
-  <xacro:za_ros2_control prefix="$(arg prefix)"/>
+  <xacro:if value="$(arg include_hardware)">
+    <xacro:include filename="$(find za_description)/urdf/za.ros2_control.xacro"/>
+    <xacro:za_ros2_control prefix="$(arg prefix)" use_mock_hardware="$(arg use_mock_hardware)"/>
+  </xacro:if>
 </robot>
