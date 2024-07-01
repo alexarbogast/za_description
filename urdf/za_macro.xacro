@@ -1,10 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:include filename="$(find za_description)/urdf/utils.xacro"/>"
-  
   <xacro:macro name="za_macro" params="prefix">
-    <!-- Is the robot being simulated in gazebo?" -->
-    <xacro:arg name="gazebo" default="true" />
 
     <!-- link list -->
     <link name="${prefix}base_link">
@@ -24,7 +20,6 @@
         <inertia ixx="0.185203" ixy="0.000006" ixz="0.016506" iyy="0.232301" iyz="0.000014" izz="0.163415"/>
       </inertial>
     </link>
-
     <link name="${prefix}link_1">
       <visual>
         <geometry>
@@ -42,7 +37,6 @@
         <inertia ixx="0.178493" ixy="0.002772" ixz="0.010363" iyy="0.126756" iyz="0.016161" izz="0.130031"/>
       </inertial>
     </link>
-
     <link name="${prefix}link_2">
       <visual>
         <geometry>
@@ -60,7 +54,6 @@
         <inertia ixx="0.740919" ixy="-0.003160" ixz="-0.003160" iyy="0.699365" iyz="0.039435" izz="0.100361"/>
       </inertial>
     </link>
-
     <link name="${prefix}link_3">
       <visual>
         <geometry>
@@ -78,7 +71,6 @@
         <inertia ixx="0.027465" ixy="0.001126" ixz="0.004749" iyy="0.037555" iyz="-0.000148" izz="0.031377"/>
       </inertial>
     </link>
-
     <link name="${prefix}link_4">
       <visual>
         <geometry>
@@ -96,7 +88,6 @@
         <inertia ixx="0.019909" ixy="0.003159" ixz="-0.000103" iyy="0.058941" iyz="-0.000022" izz="0.066959"/>
       </inertial>
     </link>
-
     <link name="${prefix}link_5">
       <visual>
         <geometry>
@@ -114,7 +105,6 @@
         <inertia ixx="0.002635" ixy="-0.000031" ixz="-0.000023" iyy="0.005551" iyz="0.000004" izz="0.005487"/>
       </inertial>
     </link>
-
     <link name="${prefix}link_6">
       <visual>
         <geometry>
