@@ -1,5 +1,7 @@
 # `za_description` package
 
+[![license - apache 2.0](https://img.shields.io/:license-Apache%202.0-yellowgreen.svg)](https://opensource.org/licenses/Apache-2.0)
+
 This package contains URDF files and meshes for the **Tormach ZA6** robot.
 
 <p align="center">
