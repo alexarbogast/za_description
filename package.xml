@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>za_description</name>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
   <description>Tormach ZA robot URDF files and meshes</description>
 
   <maintainer email="arbogastaw@gmail.com">Alex Arbogast</maintainer>
@@ -12,7 +12,9 @@
   <buildtool_depend>catkin</buildtool_depend>
   <buildtool_depend>liburdfdom-tools</buildtool_depend>
 
+  <exec_depend>joint_state_publisher_gui</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>rviz</exec_depend>
   <exec_depend>xacro</exec_depend>
-  <build_export_depend>xacro</build_export_depend>
 
 </package>
