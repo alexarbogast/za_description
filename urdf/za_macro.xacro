@@ -14,11 +14,6 @@
           <mesh filename="package://za_description/meshes/collision/base_link_collision.stl"/>
         </geometry>
       </collision>
-      <inertial>
-        <origin xyz="-0.035356 -0.000003 0.142049"/>
-        <mass value="18.327"/>
-        <inertia ixx="0.185203" ixy="0.000006" ixz="0.016506" iyy="0.232301" iyz="0.000014" izz="0.163415"/>
-      </inertial>
     </link>
     <link name="${prefix}link_1">
       <visual>
@@ -31,11 +26,6 @@
           <mesh filename="package://za_description/meshes/collision/link_1_collision.stl"/>
         </geometry>
       </collision>
-      <inertial>
-        <origin xyz="0.009612 0.016390 -0.065742"/>
-        <mass value="13.44"/>
-        <inertia ixx="0.178493" ixy="0.002772" ixz="0.010363" iyy="0.126756" iyz="0.016161" izz="0.130031"/>
-      </inertial>
     </link>
     <link name="${prefix}link_2">
       <visual>
@@ -48,11 +38,6 @@
           <mesh filename="package://za_description/meshes/collision/link_2_collision.stl"/>
         </geometry>
       </collision>
-      <inertial>
-        <origin xyz="-0.003803 0.001296 0.191397"/>
-        <mass value="17.11"/>
-        <inertia ixx="0.740919" ixy="-0.003160" ixz="-0.003160" iyy="0.699365" iyz="0.039435" izz="0.100361"/>
-      </inertial>
     </link>
     <link name="${prefix}link_3">
       <visual>
@@ -65,11 +50,6 @@
           <mesh filename="package://za_description/meshes/collision/link_3_collision.stl"/>
         </geometry>
       </collision>
-      <inertial>
-        <origin xyz="0.019381 -0.007200 -0.002694"/>
-        <mass value="7.33"/>
-        <inertia ixx="0.027465" ixy="0.001126" ixz="0.004749" iyy="0.037555" iyz="-0.000148" izz="0.031377"/>
-      </inertial>
     </link>
     <link name="${prefix}link_4">
       <visual>
@@ -82,11 +62,6 @@
           <mesh filename="package://za_description/meshes/collision/link_4_collision.stl"/>
         </geometry>
       </collision>
-      <inertial>
-        <origin xyz="0.290062 0.005593 0.000640"/>
-        <mass value="6.11"/>
-        <inertia ixx="0.019909" ixy="0.003159" ixz="-0.000103" iyy="0.058941" iyz="-0.000022" izz="0.066959"/>
-      </inertial>
     </link>
     <link name="${prefix}link_5">
       <visual>
@@ -99,11 +74,6 @@
           <mesh filename="package://za_description/meshes/collision/link_5_collision.stl"/>
         </geometry>
       </collision>
-      <inertial>
-        <origin xyz="0.009621 0.000953 0.000305"/>
-        <mass value="2.44"/>
-        <inertia ixx="0.002635" ixy="-0.000031" ixz="-0.000023" iyy="0.005551" iyz="0.000004" izz="0.005487"/>
-      </inertial>
     </link>
     <link name="${prefix}link_6">
       <visual>
@@ -116,68 +86,56 @@
           <mesh filename="package://za_description/meshes/collision/link_6_collision.stl"/>
         </geometry>
       </collision>
-      <inertial>
-        <origin xyz="-0.012049 0.000000 0.000000"/>
-        <mass value="0.244"/>
-        <inertia ixx="0.000106" ixy="0.000000" ixz="0.000000" iyy="0.000064" iyz="0.000000" izz="0.000064"/>
-      </inertial>
     </link>
 
     <!-- joint list -->
     <joint name="${prefix}joint_1" type="revolute">
-      <origin rpy="0.0 0.0 0.0" xyz="0 0 0.45"/>
-      <axis xyz="0 0 1"/>
       <parent link="${prefix}base_link"/>
       <child link="${prefix}link_1"/>
-      <limit effort="500.0" lower="-2.96" upper="2.96" velocity="2.6"/>
-      <dynamics damping="0.003" friction="0.0"/>
-  </joint>
+      <origin rpy="0.0 0.0 0.0" xyz="0 0 0.45"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="0" lower="${radians(-170)}" upper="${radians(170)}" velocity="${radians(150)}"/>
+    </joint>
     <joint name="${prefix}joint_2" type="revolute">
-      <origin rpy="0.0 0.0 0.0" xyz="0.025 0 0.0"/>
-      <axis xyz="0 1 0"/>
       <parent link="${prefix}link_1"/>
       <child link="${prefix}link_2"/>
-      <limit effort="500.0" lower="-1.74" upper="2.35" velocity="1.9"/>
-      <dynamics damping="0.003" friction="0.0"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.025 0 0.0"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="0" lower="${radians(-100)}" upper="${radians(130)}" velocity="${radians(112.5)}"/>
     </joint>
     <joint name="${prefix}joint_3" type="revolute">
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.001 0.454"/>
-      <axis xyz="0 1 0"/>
       <parent link="${prefix}link_2"/>
       <child link="${prefix}link_3"/>
-      <limit effort="200.0" lower="-1.570796" upper="1.15" velocity="2.6"/>
-      <dynamics damping="0.003" friction="0.0"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.001 0.454"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="0" lower="${radians(-120)}" upper="${radians(65)}" velocity="${radians(150)}"/>
     </joint>
     <joint name="${prefix}joint_4" type="revolute">
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.035"/>
-      <axis xyz="1 0 0"/>
       <parent link="${prefix}link_3"/>
       <child link="${prefix}link_4"/>
-      <limit effort="100.0" lower="-2.6" upper="2.6" velocity="3.5"/>
-      <dynamics damping="0.003" friction="0.0"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.035"/>
+      <axis xyz="1 0 0"/>
+      <limit effort="0" lower="${radians(-180)}" upper="${radians(180)}" velocity="${radians(204.5)}"/>
     </joint>
     <joint name="${prefix}joint_5" type="revolute">
-      <origin rpy="0.0 0.0 0.0" xyz="0.4195 0.001 0.0"/>
-      <axis xyz="0 1 0"/>
       <parent link="${prefix}link_4"/>
       <child link="${prefix}link_5"/>
-      <limit effort="100.0" lower="-2.49" upper="2.49" velocity="3.9"/>
-      <dynamics damping="0.003" friction="0.0"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.4195 0.001 0.0"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="0" lower="${radians(-140)}" upper="${radians(140)}" velocity="${radians(225)}"/>
     </joint>
     <joint name="${prefix}joint_6" type="revolute">
-      <origin rpy="0.0 0.0 0.0" xyz="0.1175 0.0 0.0"/>
-      <axis xyz="1 0 0"/>
       <parent link="${prefix}link_5"/>
       <child link="${prefix}link_6"/>
-      <limit effort="3.0" lower="${pi*-1}" upper="${pi*1}" velocity="${pi*2}"/>
-      <dynamics damping="0.003" friction="0.003"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.1175 0.0 0.0"/>
+      <axis xyz="1 0 0"/>
+      <limit effort="0" lower="${radians(-360)}" upper="${radians(360)}" velocity="${radians(360)}"/>
     </joint>
 
-    <!-- ROS-Industrial 'base' frame: base_link to Fanuc World Coordinates transform -->
+    <!-- ROS-Industrial 'base' frame: base_link to Tormach World Coordinates transform -->
     <link name="${prefix}base" />
     <joint name="${prefix}base_link-base" type="fixed">
       <origin xyz="0 0 0" rpy="0 0 0"/>
-      <axis xyz="0 0 1"/>
       <parent link="${prefix}base_link"/>
       <child link="${prefix}base"/>
     </joint>

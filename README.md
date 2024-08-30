@@ -1,18 +1,39 @@
 # `za_description` package
 
-Contains URDF files and meshes for the Tormach Za6 robot. This package has been tested with ROS2 Humble.
+[![license - apache 2.0](https://img.shields.io/:license-Apache%202.0-yellowgreen.svg)](https://opensource.org/licenses/Apache-2.0)
 
-> [!NOTE]
-> This is an UNOFFICIAL robot description package. The author is not affliated with Tormach Inc..**
+This package provides a ROS2 package with URDF files and meshes for the
+**Tormach ZA6** robot.
 
-<img src="https://user-images.githubusercontent.com/46149643/183477417-2eaff869-53f8-4387-8b61-106968b1359d.png"  width="300" height="300">
+<p align="center">
+  <img src=https://github.com/user-attachments/assets/3374a09c-8da8-4547-b49b-d1576fb6c3ab width=200/>
+</p>
+
+## Installation
+
+Create a colcon workspace and clone the repository locally.
+
+```shell
+mkdir -p colcon_ws/src  && cd colcon_ws/src
+git clone -b ros2 git@github.com:alexarbogast/za_description.git
+```
+
+Build the ROS2 package.
+
+```shell
+cd ../
+colcon build
+```
 
 ## Run the demo
-To visualize the robot, install this repository in your workspace and run the following:
-```
+
+After installation run the following command to visualize the robot:
+
+```shell
 ros2 launch za_description za_arm_description.launch.py
 ```
 
 ## Further Assistance
+
 - [ZA6 Robot Documentation](https://tormach.atlassian.net/wiki/spaces/ROBO/overview?homepageId=2822144301)
-- [ROS2 URDF Tutorial](https://docs.ros.org/en/rolling/Tutorials/Intermediate/URDF/URDF-Main.html)
+- [ROS URDF Tutorial](https://wiki.ros.org/urdf/Tutorials)
