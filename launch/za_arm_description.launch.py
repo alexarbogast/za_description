@@ -9,40 +9,51 @@ from launch.substitutions import (
 
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
-from launch_ros.parameter_descriptions import ParameterValue
 
 
 def generate_launch_description():
-    default_rviz_config = PathJoinSubstitution(
-        [FindPackageShare("za_description"), "rviz", "za_model_viewer.rviz"]
-    )
-
     declared_arguments = []
     declared_arguments.append(
         DeclareLaunchArgument(
-            "model",
-            default_value="za.xacro",
-            description="URDF/XACRO description file with the robot, e.g. za.xacro",
+            "prefix",
+            default_value="",
+            description="The prefix appended to URDF",
+        )
+    )
+    declared_arguments.append(
+        DeclareLaunchArgument(
+            "description_file",
+            default_value=PathJoinSubstitution(
+                [FindPackageShare("za_description"), "urdf", "za.xacro"]
+            ),
+            description="The absolute path of the urdf/xacro robot description",
         )
     )
     declared_arguments.append(
         DeclareLaunchArgument(
             "rviz_config_file",
-            default_value=default_rviz_config,
+            default_value=PathJoinSubstitution(
+                [FindPackageShare("za_description"), "rviz", "za_model_viewer.rviz"]
+            ),
             description="The configuration file to use for RViz",
         )
     )
 
-    model = LaunchConfiguration("model")
+    prefix = LaunchConfiguration("prefix")
+    description_file = LaunchConfiguration("description_file")
     rviz_config_file = LaunchConfiguration("rviz_config_file")
 
-    robot_description = Command(
+    robot_description_content = Command(
         [
             PathJoinSubstitution([FindExecutable(name="xacro")]),
             " ",
-            PathJoinSubstitution([FindPackageShare("za_description"), "urdf", model]),
+            description_file,
+            " ",
+            "prefix:=",
+            prefix,
         ]
     )
+    robot_description = {"robot_description": robot_description_content}
 
     joint_state_publisher_node = Node(
         package="joint_state_publisher_gui",
@@ -54,9 +65,7 @@ def generate_launch_description():
         executable="robot_state_publisher",
         name="robot_state_publisher",
         output="screen",
-        parameters=[
-            {"robot_description": ParameterValue(robot_description, value_type=str)}
-        ],
+        parameters=[robot_description],
     )
 
     rviz_node = Node(

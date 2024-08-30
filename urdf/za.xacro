@@ -6,7 +6,7 @@
   <xacro:include filename="$(find za_description)/urdf/za_macro.xacro"/>
   <xacro:za_macro prefix="$(arg prefix)"/>
 
-  <!-- 'world' frame: default pose reference frame -->
+  <!-- 'world' frame - default pose reference frame -->
   <link name="world" />
   <joint name="world-$(arg prefix)base_link" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0"/>
