@@ -13,8 +13,8 @@
       </hardware>
       <joint name="${prefix}joint_1">
         <command_interface name="position">
-          <param name="min">-2.96</param>
-          <param name="max">2.96</param>
+          <param name="min">${radians(-170)}</param>
+          <param name="max">${radians(170)}</param>
         </command_interface>
         <state_interface name="position">
           <param name="initial_value">0.0</param>
@@ -23,8 +23,8 @@
       </joint>
       <joint name="${prefix}joint_2">
         <command_interface name="position">
-          <param name="min">-1.74</param>
-          <param name="max">2.35</param>
+          <param name="min">${radians(-100)}</param>
+          <param name="max">${radians(130)}</param>
         </command_interface>
         <state_interface name="position">
           <param name="initial_value">0.53</param>
@@ -33,8 +33,8 @@
       </joint>
       <joint name="${prefix}joint_3">
         <command_interface name="position">
-          <param name="min">{-0.5 * pi}</param>
-          <param name="max">1.15</param>
+          <param name="min">${radians(-120)}</param>
+          <param name="max">${radians(65)}</param>
         </command_interface>
         <state_interface name="position">
           <param name="initial_value">0.47</param>
@@ -43,8 +43,8 @@
       </joint>
       <joint name="${prefix}joint_4">
         <command_interface name="position">
-          <param name="min">-2.6</param>
-          <param name="max">2.6</param>
+          <param name="min">${radians(-180)}</param>
+          <param name="max">${radians(180)}</param>
         </command_interface>
         <state_interface name="position">
           <param name="initial_value">0.0</param>
@@ -53,8 +53,8 @@
       </joint>
       <joint name="${prefix}joint_5">
         <command_interface name="position">
-          <param name="min">-2.49</param>
-          <param name="max">2.49</param>
+          <param name="min">${radians(-140)}</param>
+          <param name="max">${radians(140)}</param>
         </command_interface>
         <state_interface name="position">
           <param name="initial_value">-1.0</param>
@@ -63,8 +63,8 @@
       </joint>
       <joint name="${prefix}joint_6">
         <command_interface name="position">
-          <param name="min">{pi * -1}</param>
-          <param name="max">{pi}</param>
+          <param name="min">${radians(-360)}</param>
+          <param name="max">${radians(360)}</param>
         </command_interface>
         <state_interface name="position">
           <param name="initial_value">0.0</param>
