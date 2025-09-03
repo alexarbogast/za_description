@@ -1,0 +1,3 @@
+# Treat 3D model files as binary
+*.dae binary
+*.stl binary
