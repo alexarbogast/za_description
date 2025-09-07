@@ -1,6 +1,13 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="za_ros2_control" params="prefix use_mock_hardware:=^|true">
+  <xacro:macro name="za_ros2_control" params="
+    prefix
+    use_mock_hardware:=true
+    initial_positions_file:='$(find za_description)/config/initial_positions.yaml'">
+
+    <xacro:property
+      name="initial_positions"
+      value="${xacro.load_yaml(initial_positions_file)['initial_positions']}"/>
 
     <ros2_control name="${prefix}ros2_control" type="system">
       <hardware>
@@ -17,7 +24,7 @@
           <param name="max">${radians(170)}</param>
         </command_interface>
         <state_interface name="position">
-          <param name="initial_value">0.0</param>
+          <param name="initial_value">${initial_positions['joint_1']}</param>
         </state_interface>
         <state_interface name="velocity"/>
       </joint>
@@ -27,7 +34,7 @@
           <param name="max">${radians(130)}</param>
         </command_interface>
         <state_interface name="position">
-          <param name="initial_value">0.53</param>
+          <param name="initial_value">${initial_positions['joint_2']}</param>
         </state_interface>
         <state_interface name="velocity"/>
       </joint>
@@ -37,7 +44,7 @@
           <param name="max">${radians(65)}</param>
         </command_interface>
         <state_interface name="position">
-          <param name="initial_value">0.47</param>
+          <param name="initial_value">${initial_positions['joint_3']}</param>
         </state_interface>
         <state_interface name="velocity"/>
       </joint>
@@ -47,7 +54,7 @@
           <param name="max">${radians(180)}</param>
         </command_interface>
         <state_interface name="position">
-          <param name="initial_value">0.0</param>
+          <param name="initial_value">${initial_positions['joint_4']}</param>
         </state_interface>
         <state_interface name="velocity"/>
       </joint>
@@ -57,7 +64,7 @@
           <param name="max">${radians(140)}</param>
         </command_interface>
         <state_interface name="position">
-          <param name="initial_value">-1.0</param>
+          <param name="initial_value">${initial_positions['joint_5']}</param>
         </state_interface>
         <state_interface name="velocity"/>
       </joint>
@@ -67,7 +74,7 @@
           <param name="max">${radians(360)}</param>
         </command_interface>
         <state_interface name="position">
-          <param name="initial_value">0.0</param>
+          <param name="initial_value">${initial_positions['joint_6']}</param>
         </state_interface>
         <state_interface name="velocity"/>
       </joint>

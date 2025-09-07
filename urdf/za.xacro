@@ -3,6 +3,9 @@
   <xacro:arg name="prefix" default=""/>
   <xacro:arg name="use_mock_hardware" default="true"/>
   <xacro:arg name="include_hardware" default="true"/>
+  <xacro:arg name="initial_positions_file"
+             default="$(find za_description)/config/initial_positions"/>
+
   <xacro:include filename="$(find za_description)/urdf/za_macro.xacro"/>
   <xacro:za_macro prefix="$(arg prefix)"/>
 
