@@ -1,0 +1,38 @@
+# Joint limits
+
+joint_limits:
+  joint_1:
+    min_position: !degrees -170
+    max_position: !degrees  170
+    max_velocity: !degrees  150
+    max_effort: 1000.0
+
+  joint_2:
+    min_position: !degrees -100
+    max_position: !degrees  130
+    max_velocity: !degrees  112.5
+    max_effort: 1000.0
+
+  joint_3:
+    min_position: !degrees -120
+    max_position: !degrees   65
+    max_velocity: !degrees  150
+    max_effort: 1000.0
+
+  joint_4:
+    min_position: !degrees -180
+    max_position: !degrees  180
+    max_velocity: !degrees  204.5
+    max_effort: 1000.0
+
+  joint_5:
+    min_position: !degrees -140
+    max_position: !degrees  140
+    max_velocity: !degrees  225
+    max_effort: 1000.0
+
+  joint_6:
+    min_position: !degrees -360
+    max_position: !degrees  360
+    max_velocity: !degrees  360
+    max_effort: 1000.0
