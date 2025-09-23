@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
   <xacro:macro name="za_macro" params="
     prefix
-    joint_limits_parameters_file
+    joint_limits_parameters_file:='$(find za_description)/config/joint_limits.yaml'
     ">
 
   <xacro:property name="joint_limits_parameters" value="${xacro.load_yaml(joint_limits_parameters_file)}"/>
